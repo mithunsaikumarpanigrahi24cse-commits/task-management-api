@@ -1,0 +1,99 @@
+.filter-bar {
+  display: grid;
+  gap: 12px;
+  padding: 18px 0 0;
+}
+
+.filter-button {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  background: var(--panel-soft);
+  color: var(--text);
+  font-weight: 700;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.filter-button:hover {
+  background: rgba(79,70,229,0.16);
+  color: var(--primary);
+}
+
+/* Dark mode - All filter (indigo) */
+html[data-theme="dark"] .filter-button.filter-all {
+  background: rgba(79,70,229,0.18);
+  border-color: rgba(79,70,229,0.24);
+  color: var(--primary);
+}
+
+/* Dark mode - Completed filter (green) */
+html[data-theme="dark"] .filter-button.filter-completed {
+  background: rgba(16,185,129,0.20);
+  border-color: rgba(16,185,129,0.30);
+  color: #10b981;
+}
+
+/* Dark mode - Pending filter (cyan) */
+html[data-theme="dark"] .filter-button.filter-pending {
+  background: rgba(6,182,212,0.20);
+  border-color: rgba(6,182,212,0.30);
+  color: #06b6d4;
+}
+
+/* Dark mode - High Priority filter (red) */
+html[data-theme="dark"] .filter-button.filter-high {
+  background: rgba(239,68,68,0.20);
+  border-color: rgba(239,68,68,0.30);
+  color: #ef4444;
+}
+
+.filter-button.active {
+  background: var(--primary);
+  border-color: rgba(79,70,229,0.24);
+  color: white;
+}
+
+/* Dark mode - Active filter */
+html[data-theme="dark"] .filter-button.active.filter-all {
+  background: rgba(79,70,229,0.30);
+  border-color: rgba(79,70,229,0.40);
+  color: #c7d2fe;
+}
+
+html[data-theme="dark"] .filter-button.active.filter-completed {
+  background: rgba(16,185,129,0.30);
+  border-color: rgba(16,185,129,0.40);
+  color: #d1fae5;
+}
+
+html[data-theme="dark"] .filter-button.active.filter-pending {
+  background: rgba(6,182,212,0.30);
+  border-color: rgba(6,182,212,0.40);
+  color: #cffafe;
+}
+
+html[data-theme="dark"] .filter-button.active.filter-high {
+  background: rgba(239,68,68,0.30);
+  border-color: rgba(239,68,68,0.40);
+  color: #fecaca;
+}
+
+@media (min-width: 680px) {
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .filter-button {
+    flex: 1 1 calc(50% - 8px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .filter-bar {
+    gap: 14px;
+  }
+}

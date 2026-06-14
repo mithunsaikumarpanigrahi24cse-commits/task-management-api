@@ -1,6 +1,6 @@
 const Task = require("../models/Task");
 
-exports.createTask = async(req,res,next)=>{
+exports.createTask = async(req,res,next)=>{     //create a new task
 
 try{
 
@@ -18,7 +18,7 @@ next(error);
 
 };
 
-exports.getTasks = async(req,res,next)=>{
+exports.getTasks = async(req,res,next)=>{    //get all tasks
 
 try{
 
@@ -36,7 +36,7 @@ next(error);
 
 };
 
-exports.getTask = async(req,res,next)=>{
+exports.getTask = async(req,res,next)=>{  //get a single task by id
 
 try{
 
@@ -65,7 +65,7 @@ next(error);
 
 };
 
-exports.updateTask = async(req,res,next)=>{
+exports.updateTask = async(req,res,next)=>{  //update a task by id
 
 try{
 
@@ -103,7 +103,7 @@ next(error);
 
 };
 
-exports.deleteTask = async(req,res,next)=>{
+exports.deleteTask = async(req,res,next)=>{        //delete a task by id
 
 try{
 

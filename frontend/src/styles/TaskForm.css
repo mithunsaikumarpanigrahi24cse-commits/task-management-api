@@ -1,0 +1,105 @@
+.task-form-panel {
+  padding: 24px;
+  background: var(--surface);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.form-header {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.task-form {
+  display: grid;
+  gap: 16px;
+}
+
+.task-form-row {
+  display: grid;
+  gap: 16px;
+}
+
+.task-form label {
+  display: grid;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--panel-soft);
+  color: var(--text);
+}
+
+.task-form input::placeholder,
+.task-form textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.9;
+}
+
+.task-form input:focus,
+.task-form textarea:focus,
+.task-form select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 6px 20px rgba(79,70,229,0.08);
+}
+
+.task-form textarea {
+  resize: vertical;
+}
+
+.submit-button,
+.text-button,
+.secondary-button,
+.danger-button {
+  border-radius: 16px;
+  border: none;
+  font-weight: 700;
+}
+
+.submit-button {
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+}
+
+.text-button {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 680px) {
+  .task-form-row {
+    grid-template-columns: 1.4fr 0.8fr;
+  }
+}
