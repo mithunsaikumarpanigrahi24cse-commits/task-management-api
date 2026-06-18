@@ -1,46 +1,52 @@
-# TaskFlow - MERN Task Management Dashboard
+# TaskFlow - Full Stack MERN Task Management Dashboard
 
-A full-stack Task Management Application built using the MERN Stack (MongoDB, Express.js, React.js, Node.js).
+## Overview
 
-TaskFlow helps users create, organize, update, and track tasks through a modern dashboard interface powered by a RESTful backend API.
+TaskFlow is a Full Stack Task Management Dashboard built using the MERN Stack (MongoDB, Express.js, React.js, Node.js).
 
----
+The application allows users to securely register, log in, and manage tasks through a modern dashboard interface. Authentication is implemented using JSON Web Tokens (JWT), passwords are securely hashed using bcryptjs, and all task data is stored in MongoDB.
 
-## Project Overview
-
-This project demonstrates full-stack web development concepts including:
-
-* React Frontend Development
-* REST API Development
-* MongoDB Integration
-* CRUD Operations
-* Frontend-Backend Communication
-* Responsive UI Design
-* Git & GitHub Workflow
+This project demonstrates real-world full-stack development concepts including REST APIs, Authentication & Authorization, Protected Routes, Database Integration, Frontend-Backend Communication, and Responsive UI Design.
 
 ---
 
 ## Features
 
+### Authentication & Security
+
+* User Registration
+* User Login
+* JWT Authentication
+* Protected Routes
+* Password Hashing using bcryptjs
+* Logout Functionality
+
+### Task Management
+
+* Create Tasks
+* View Tasks
+* Update Tasks
+* Delete Tasks
+* Mark Tasks as Completed
+* Task Statistics Dashboard
+* Task Filtering
+
 ### Frontend
 
-* Modern Dashboard UI
-* Task Statistics
-* Search Functionality
-* Task Filtering
-* Create, Update, Delete Tasks
-* Task Completion Toggle
-* Light/Dark Theme
-* Responsive Design
+* React.js + Vite
+* React Router DOM
+* Axios API Integration
+* Responsive UI
+* Component-Based Architecture
 
 ### Backend
 
 * RESTful API
-* CRUD Operations
 * MongoDB Integration
-* Mongoose Validation
+* Mongoose ODM
+* Authentication Middleware
 * Error Handling Middleware
-* Morgan Logging
+* Morgan Request Logging
 * Environment Variable Configuration
 
 ---
@@ -49,8 +55,9 @@ This project demonstrates full-stack web development concepts including:
 
 ### Frontend
 
-* React 19
+* React.js
 * Vite
+* React Router DOM
 * Axios
 * CSS3
 
@@ -60,96 +67,195 @@ This project demonstrates full-stack web development concepts including:
 * Express.js
 * MongoDB
 * Mongoose
+* JWT (jsonwebtoken)
+* bcryptjs
+* dotenv
+* cors
+* morgan
 
-### Tools
+### Development Tools
 
 * Git
 * GitHub
-* Postman
 * VS Code
+* Postman
+* MongoDB Compass
 
 ---
 
-## Repository Structure
+## Project Structure
 
 ```plaintext
-INTERNSPARK PROJECT 1
+InternSpark Project1
 │
 ├── frontend
+│   ├── src
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── services
+│   │   ├── styles
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   │
+│   ├── public
+│   ├── package.json
 │   └── README.md
 │
-└── task-api
-    └── README.md
+├── task-api
+│   ├── config
+│   ├── Controllers
+│   ├── middleware
+│   ├── models
+│   ├── routes
+│   ├── server.js
+│   ├── package.json
+│   └── README.md
+│
+└── README.md
 ```
 
 ---
 
-## Documentation
+## Folder Explanation
 
-### Frontend Documentation
+### Frontend
 
-See:
+| Folder/File | Purpose                         |
+| ----------- | ------------------------------- |
+| assets      | Stores images and static assets |
+| components  | Reusable React components       |
+| pages       | Application pages               |
+| services    | API communication layer         |
+| styles      | CSS styling files               |
+| App.jsx     | Root component                  |
+| main.jsx    | React entry point               |
 
-```text
-frontend/README.md
-```
+### Backend
 
-for:
-
-* Setup Instructions
-* React Architecture
-* Features
-* API Integration
-* Build Process
-
-### Backend Documentation
-
-See:
-
-```text
-task-api/README.md
-```
-
-for:
-
-* API Endpoints
-* MongoDB Setup
-* Mongoose Models
-* Error Handling
-* Project Architecture
+| Folder/File | Purpose                           |
+| ----------- | --------------------------------- |
+| config      | Database configuration            |
+| Controllers | Business logic layer              |
+| middleware  | Authentication & error middleware |
+| models      | MongoDB schemas                   |
+| routes      | API route definitions             |
+| server.js   | Backend entry point               |
 
 ---
 
-## Learning Outcomes
+## Authentication Flow
 
-Through this project I gained practical experience in:
+1. User registers with name, email, and password.
+2. Password is hashed using bcryptjs.
+3. User information is stored in MongoDB.
+4. JWT token is generated.
+5. Token is sent to the frontend.
+6. ProtectedRoute verifies token presence.
+7. Authenticated users can access the dashboard.
+
+---
+
+## Installation & Setup
+
+### Clone Repository
+
+```bash
+git clone <repository-url>
+```
+
+### Install Frontend Dependencies
+
+```bash
+cd frontend
+npm install
+```
+
+### Install Backend Dependencies
+
+```bash
+cd ../task-api
+npm install
+```
+
+### Create Backend Environment Variables
+
+Create a `.env` file:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+CLIENT_URL=http://localhost:5173
+```
+
+---
+
+## Running The Project
+
+### Start Backend
+
+```bash
+cd task-api
+npm start
+```
+
+### Start Frontend
+
+```bash
+cd frontend
+npm run dev
+```
+
+---
+
+## API Endpoints
+
+### Authentication
+
+```http
+POST /api/auth/register
+POST /api/auth/login
+```
+
+### Tasks
+
+```http
+GET    /api/tasks
+POST   /api/tasks
+PUT    /api/tasks/:id
+DELETE /api/tasks/:id
+```
+
+---
+
+## Skills Demonstrated
 
 * MERN Stack Development
+* REST API Development
+* Authentication & Authorization
+* MongoDB Integration
 * React Hooks
-* Axios API Integration
-* Express.js Routing
-* MongoDB & Mongoose
-* CRUD Operations
-* CORS Configuration
-* Responsive UI Development
-* Git & GitHub Version Control
+* React Router
+* Axios Integration
+* MVC Architecture
+* Middleware Implementation
+* API Testing
+* Git & GitHub Workflow
+* Full Stack Debugging
 
 ---
 
-## Future Improvements
+## Future Enhancements
 
-* JWT Authentication
-* User Registration & Login
-* Protected Routes
-* Pagination
-* Advanced Search & Filtering
-* Deployment on Render/Vercel
+* Docker Containerization
+* Cloud Deployment (Render / Vercel)
+* Role-Based Access Control (RBAC)
+* Advanced Analytics Dashboard
 
 ---
 
 ## Author
 
 **Mithun Sai Kumar**
-
-GitHub:
-https://github.com/mithunsaikumarpanigrahi24cse-commits
