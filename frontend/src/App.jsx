@@ -1,8 +1,8 @@
 import './styles/App.css'
-import Dashboard from './pages/Dashboard'
+import { Outlet } from 'react-router-dom'
 
 function App() {
-  return <Dashboard />
+  return <Outlet />
 }
 
-export default App
+export default App;

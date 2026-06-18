@@ -39,6 +39,11 @@ function Dashboard() {
         const data = await fetchTasks()
         setTasks(Array.isArray(data) ? data : [])
       } catch (err) {
+        if (err.response?.status === 401) {
+          localStorage.removeItem('token')
+          window.location.href = '/login'
+          return
+        }
         setError('Unable to load tasks. Please check your backend connection.')
       } finally {
         setLoading(false)

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/Header.css'
 
 function Header({ projectName, searchValue, onSearchChange }) {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
+  const navigate = useNavigate()
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     try {
@@ -12,6 +15,11 @@ function Header({ projectName, searchValue, onSearchChange }) {
   }, [theme])
 
   const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/login')
+  }
 
   return (
     <div>
@@ -34,10 +42,17 @@ function Header({ projectName, searchValue, onSearchChange }) {
         </div>
 
         <nav className="dashboard-nav">
+          <Link to="/dashboard">Dashboard</Link>
           <a href="#tasks">Overview</a>
           <a href="#create">Create</a>
-          <a href="#stats">Stats</a>
           <a href="#help">Support</a>
+          {token ? (
+            <button type="button" className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
         </nav>
 
         <label className="search-field">

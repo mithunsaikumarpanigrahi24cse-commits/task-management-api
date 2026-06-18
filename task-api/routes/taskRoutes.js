@@ -1,7 +1,9 @@
 const express=require("express");
 
 const router=express.Router();
+const auth=require("../middleware/authMiddleware");
 
+router.use(auth); // protect all routes below
 const {
 
 createTask,
@@ -10,7 +12,7 @@ getTask,
 updateTask,
 deleteTask
 
-}=require("../controllers/taskController");
+}=require("../Controllers/taskController");
 
 router.route("/")
 
