@@ -162,7 +162,8 @@ InternSpark Project1
 ### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/mithunsaikumarpanigrahi24cse-commits/task-management-api.git
+
 ```
 
 ### Install Frontend Dependencies
