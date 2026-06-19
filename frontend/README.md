@@ -1,62 +1,45 @@
 # TaskFlow Frontend
 
-A modern and responsive task management dashboard built with React.js and Vite.
+A modern, responsive, and user-friendly Task Management Dashboard built with React.js and Vite.
 
-TaskFlow provides an intuitive user experience for managing tasks, tracking progress, filtering data, and organizing daily work through a clean and professional user interface.
-
----
-
-## Project Overview
-
-TaskFlow Frontend is the client-side application of a full-stack MERN Task Management System.
-
-The application communicates with a Node.js, Express.js, and MongoDB backend through REST APIs and provides users with an efficient way to create, manage, and track tasks.
-
-The project focuses on modern React development practices, responsive design, API integration, and user experience.
+TaskFlow enables users to securely register, log in, and manage tasks through an intuitive dashboard interface connected to a RESTful backend API.
 
 ---
 
 ## Features
 
+### Authentication
+
+- User Registration
+- User Login
+- JWT Token Authentication
+- Protected Routes
+- Logout Functionality
+- Persistent Login using Local Storage
+
 ### Dashboard
 
-* Modern dashboard layout
-* Task statistics overview
-* Clean and professional UI
-* Responsive design for all screen sizes
+- Modern Dashboard UI
+- Responsive Layout
+- Task Statistics Overview
+- Real-Time Task Updates
 
 ### Task Management
 
-* Create new tasks
-* Edit existing tasks
-* Delete tasks
-* Mark tasks as completed or pending
-* Real-time task updates
-
-### Search & Filtering
-
-* Search tasks by:
-
-  * Title
-  * Description
-  * Priority
-  * Due Date
-
-* Quick filters:
-
-  * All Tasks
-  * Completed Tasks
-  * Pending Tasks
-  * High Priority Tasks
+- Create Tasks
+- View Tasks
+- Update Tasks
+- Delete Tasks
+- Mark Tasks as Completed
+- Track Task Status
 
 ### User Experience
 
-* Light Theme
-* Dark Theme
-* Theme persistence using Local Storage
-* Mobile-friendly design
-* Tablet-friendly design
-* Desktop optimized layout
+- Mobile Responsive Design
+- Tablet Friendly Layout
+- Desktop Optimized Interface
+- Clean Component-Based Architecture
+- Fast Development with Vite
 
 ---
 
@@ -64,18 +47,19 @@ The project focuses on modern React development practices, responsive design, AP
 
 ### Frontend Technologies
 
-* React 19
-* Vite
-* Axios
-* JavaScript (ES6+)
-* CSS3
+- React.js
+- Vite
+- React Router DOM
+- Axios
+- JavaScript (ES6+)
+- CSS3
 
 ### Development Tools
 
-* VS Code
-* Git
-* GitHub
-* Chrome DevTools
+- VS Code
+- Git
+- GitHub
+- Chrome DevTools
 
 ---
 
@@ -87,29 +71,109 @@ frontend
 ├── public
 │
 ├── src
-│   ├── components
-│   ├── pages
-│   ├── services
+│   │
 │   ├── assets
+│   │
+│   ├── components
+│   │   ├── FilterBar.jsx
+│   │   ├── Header.jsx
+│   │   ├── ProtectedRoute.jsx
+│   │   ├── StatsCards.jsx
+│   │   ├── TaskCard.jsx
+│   │   ├── TaskForm.jsx
+│   │   └── TaskList.jsx
+│   │
+│   ├── pages
+│   │   ├── Dashboard.jsx
+│   │   ├── Login.jsx
+│   │   └── Register.jsx
+│   │
+│   ├── services
+│   │   ├── api.js
+│   │   ├── authService.js
+│   │   └── taskService.js
+│   │
+│   ├── styles
+│   │   ├── App.css
+│   │   ├── AuthForm.css
+│   │   ├── Dashboard.css
+│   │   ├── FilterBar.css
+│   │   ├── Header.css
+│   │   ├── TaskCard.css
+│   │   └── TaskForm.css
+│   │
 │   ├── App.jsx
+│   ├── index.css
 │   └── main.jsx
 │
+├── .gitignore
+├── eslint.config.js
+├── index.html
 ├── package.json
+├── package-lock.json
 ├── vite.config.js
 └── README.md
 ```
 
 ---
 
+## Folder Explanation
+
+### components/
+
+Reusable UI components used across the application.
+
+| File | Purpose |
+|--------|---------|
+| Header.jsx | Dashboard navigation and header section |
+| ProtectedRoute.jsx | Restricts access to authenticated users |
+| TaskForm.jsx | Create and edit task form |
+| TaskCard.jsx | Displays individual task information |
+| TaskList.jsx | Renders all tasks |
+| FilterBar.jsx | Task filtering functionality |
+| StatsCards.jsx | Dashboard statistics display |
+
+---
+
+### pages/
+
+Application pages rendered through React Router.
+
+| File | Purpose |
+|--------|---------|
+| Login.jsx | User login page |
+| Register.jsx | User registration page |
+| Dashboard.jsx | Main task management dashboard |
+
+---
+
+### services/
+
+Handles API communication with the backend.
+
+| File | Purpose |
+|--------|---------|
+| api.js | Axios configuration |
+| authService.js | Authentication API requests |
+| taskService.js | Task CRUD API requests |
+
+---
+
+### styles/
+
+Contains component-specific CSS files for styling.
+
+---
+
 ## Installation
 
-### Clone the Repository
+### Clone Repository
 
 ```bash
- git clone https://github.com/mithunsaikumarpanigrahi24cse-commits/task-management-api
+git clone https://github.com/mithunsaikumarpanigrahi24cse-commits/task-management-api.git
 ```
 
-### Navigate to Frontend Folder
+### Navigate to Frontend
 
 ```bash
 cd frontend
@@ -123,15 +187,23 @@ npm install
 
 ---
 
+## Required Packages
+
+```bash
+npm install axios react-router-dom
+```
+
+---
+
 ## Running the Application
 
-Start the development server:
+Start Development Server
 
 ```bash
 npm run dev
 ```
 
-The application will run at:
+Application runs on:
 
 ```text
 http://localhost:5173
@@ -141,19 +213,13 @@ http://localhost:5173
 
 ## Production Build
 
-Create an optimized production build:
+Create Production Build
 
 ```bash
 npm run build
 ```
 
-Build files will be generated inside:
-
-```text
-dist/
-```
-
-Preview the production build:
+Preview Production Build
 
 ```bash
 npm run preview
@@ -161,59 +227,78 @@ npm run preview
 
 ---
 
-## Backend API Integration
+## Backend Connection
 
-This frontend is designed to work with the TaskFlow Backend API built using:
+The frontend communicates with the TaskFlow Backend API using Axios.
 
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-
-Ensure the backend server is running before starting the frontend application.
-
-Example API Base URL:
+Example API URL:
 
 ```javascript
-http://localhost:5000/api/tasks
+http://localhost:5000/api
 ```
 
-The frontend communicates with the backend using Axios for:
+### Authentication Endpoints
 
-* Fetching tasks
-* Creating tasks
-* Updating tasks
-* Deleting tasks
-* Managing task status
+```http
+POST /api/auth/register
+POST /api/auth/login
+```
+
+### Task Endpoints
+
+```http
+GET    /api/tasks
+POST   /api/tasks
+PUT    /api/tasks/:id
+DELETE /api/tasks/:id
+```
+
+---
+
+## Authentication Flow
+
+1. User Registers
+2. Backend Creates Account
+3. JWT Token Generated
+4. Token Stored in Local Storage
+5. Protected Routes Verify Token
+6. User Accesses Dashboard
+7. Logout Removes Token
 
 ---
 
 ## Skills Demonstrated
 
-This project demonstrates practical experience with:
-
-* React Components
-* React Hooks
-* State Management
-* API Integration
-* Axios
-* Responsive Web Design
-* CSS Styling
-* Dark Mode Implementation
-* Search & Filtering Logic
-* CRUD Operations
-* Frontend-Backend Communication
-* Git & GitHub Workflow
+- React.js Development
+- Component-Based Architecture
+- React Router
+- JWT Authentication
+- Protected Routes
+- Axios API Integration
+- State Management
+- CRUD Operations
+- Responsive Design
+- Frontend-Backend Communication
+- Git & GitHub Workflow
 
 ---
 
 ## Future Enhancements
 
-* JWT Authentication
-* User Login & Registration
-* Protected Routes
-* Role-Based Access Control
-* Drag & Drop Task Management
-* Due Date Notifications
-* Advanced Analytics Dashboard
-* Cloud Deployment
+- Docker Deployment
+- Cloud Hosting
+- Improved Mobile Responsiveness
+- Advanced Dashboard Analytics
+- Performance Optimization
+
+---
+
+## Author
+
+### Mithun Sai Kumar
+
+GitHub:
+
+https://github.com/mithunsaikumarpanigrahi24cse-commits
+
+---
