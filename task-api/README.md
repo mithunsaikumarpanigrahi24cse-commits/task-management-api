@@ -1,29 +1,47 @@
-# Task Management REST API
+# TaskFlow Backend API
 
-A professional RESTful CRUD API built using **Node.js, Express.js, MongoDB, and Mongoose**.
+A secure and scalable RESTful API built using Node.js, Express.js, MongoDB, and Mongoose.
 
-This project allows users to create, retrieve, update, and delete tasks using REST API endpoints.
+The backend powers the TaskFlow application by providing authentication, authorization, and task management functionality through REST API endpoints.
 
 ---
 
 ## Features
 
-✔ Create a new task  
-✔ Get all tasks  
-✔ Get a single task by ID  
-✔ Update a task by ID  
-✔ Delete a task by ID  
-✔ MongoDB database integration  
-✔ Schema validation using Mongoose  
-✔ Error handling middleware  
-✔ Logging using Morgan  
-✔ Environment variable configuration
+### Authentication
+
+- User Registration
+- User Login
+- Password Hashing using bcryptjs
+- JWT Token Generation
+- JWT Token Verification
+- Protected Routes
+- Secure Authentication Middleware
+
+### Task Management
+
+- Create Tasks
+- Get All Tasks
+- Get Single Task
+- Update Tasks
+- Delete Tasks
+- Mark Tasks as Completed
+
+### Backend Functionality
+
+- MongoDB Integration
+- Mongoose Schema Validation
+- Environment Variable Configuration
+- Centralized Error Handling
+- Request Logging using Morgan
+- CORS Configuration
+- RESTful API Architecture
 
 ---
 
 ## Tech Stack
 
-### Backend
+### Backend Technologies
 
 - Node.js
 - Express.js
@@ -33,68 +51,129 @@ This project allows users to create, retrieve, update, and delete tasks using RE
 - MongoDB
 - Mongoose
 
-### Development Tools
+### Authentication
 
-- Postman
-- Nodemon
+- JSON Web Token (JWT)
+- bcryptjs
+
+### Middleware
+
+- CORS
 - Morgan
 - dotenv
+
+### Development Tools
+
+- VS Code
+- Git
+- GitHub
+- Postman
 
 ---
 
 ## Project Structure
 
 ```plaintext
-task-management-api
+task-api
 │
 ├── config
 │   └── db.js
 │
-├── controllers
+├── Controllers
+│   ├── authController.js
 │   └── taskController.js
 │
 ├── middleware
+│   ├── authMiddleware.js
 │   └── errorMiddleware.js
 │
 ├── models
-│   └── Task.js
+│   ├── Task.js
+│   └── User.js
 │
 ├── routes
+│   ├── authRoutes.js
 │   └── taskRoutes.js
 │
 ├── .env
 ├── .env.example
 ├── .gitignore
 ├── package.json
+├── package-lock.json
 ├── server.js
 └── README.md
 ```
 
-### Folder Explanation
+---
 
-| Folder/File | Purpose |
-|-------------|----------|
-| **config/db.js** | MongoDB connection logic |
-| **models/Task.js** | Defines task schema & validation rules |
-| **controllers/taskController.js** | Contains CRUD business logic |
-| **routes/taskRoutes.js** | Defines API routes |
-| **middleware/errorMiddleware.js** | Centralized error handling |
-| **server.js** | Application entry point |
+## Folder Explanation
+
+### config/
+
+Database configuration files.
+
+| File | Purpose |
+|--------|---------|
+| db.js | Establishes connection with MongoDB database |
 
 ---
 
-## Installation & Setup
+### Controllers/
 
-### Clone the Repository
+Contains application business logic.
+
+| File | Purpose |
+|--------|---------|
+| authController.js | Handles user registration and login |
+| taskController.js | Handles task CRUD operations |
+
+---
+
+### middleware/
+
+Custom middleware used throughout the application.
+
+| File | Purpose |
+|--------|---------|
+| authMiddleware.js | Verifies JWT token and protects routes |
+| errorMiddleware.js | Centralized error handling |
+
+---
+
+### models/
+
+MongoDB schema definitions using Mongoose.
+
+| File | Purpose |
+|--------|---------|
+| User.js | User schema for authentication |
+| Task.js | Task schema for task management |
+
+---
+
+### routes/
+
+Defines API endpoints.
+
+| File | Purpose |
+|--------|---------|
+| authRoutes.js | Authentication endpoints |
+| taskRoutes.js | Task management endpoints |
+
+---
+
+## Installation
+
+### Clone Repository
 
 ```bash
-git clone https://github.com/mithunsaikumarpanigrahi24cse-commits/task-management-api
+git clone https://github.com/mithunsaikumarpanigrahi24cse-commits/task-management-api.git
 ```
 
-### Move Into Project Folder
+### Navigate to Backend
 
 ```bash
-cd task-management-api
+cd task-api
 ```
 
 ### Install Dependencies
@@ -103,226 +182,245 @@ cd task-management-api
 npm install
 ```
 
-### Create Environment Variables
+---
 
-Create a `.env` file in the root folder.
+## Required Packages
+
+```bash
+npm install express mongoose cors dotenv morgan bcryptjs jsonwebtoken
+```
+
+Development Dependency
+
+```bash
+npm install --save-dev nodemon
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the root directory.
 
 Example:
 
 ```env
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/taskdb
+
+MONGO_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_secret_key
+
+CLIENT_URL=http://localhost:5173
 ```
 
-### Start Server
+---
 
-Development Mode:
+## Running the Server
+
+Development Mode
 
 ```bash
 npm run dev
 ```
 
-Production Mode:
+Production Mode
 
 ```bash
 npm start
+```
+
+Server runs on:
+
+```text
+http://localhost:5000
 ```
 
 ---
 
 ## API Endpoints
 
-### 1. Create Task
+### Authentication Routes
 
-**POST**
+#### Register User
 
 ```http
-/tasks
+POST /api/auth/register
 ```
 
-#### Request Body
+Request Body
 
 ```json
 {
-  "title":"Learn Node.js",
-  "description":"Practice CRUD API"
+  "name": "Mithun",
+  "email": "mithun@gmail.com",
+  "password": "123456"
 }
 ```
 
-#### Response
+---
+
+#### Login User
+
+```http
+POST /api/auth/login
+```
+
+Request Body
 
 ```json
 {
-  "_id":"685xxxxx",
-  "title":"Learn Node.js",
-  "description":"Practice CRUD API",
-  "completed":false
+  "email": "mithun@gmail.com",
+  "password": "123456"
 }
 ```
 
----
-
-### 2. Get All Tasks
-
-**GET**
-
-```http
-/tasks
-```
-
-#### Response
-
-```json
-[
-  {
-    "_id":"685xxxxx",
-    "title":"Learn Backend",
-    "completed":false
-  }
-]
-```
-
----
-
-### 3. Get Task By ID
-
-**GET**
-
-```http
-/tasks/:id
-```
-
-#### Example
-
-```http
-/tasks/685xxxxx
-```
-
----
-
-### 4. Update Task
-
-**PUT**
-
-```http
-/tasks/:id
-```
-
-#### Request Body
+Response
 
 ```json
 {
-  "completed": true
+  "token": "jwt_token"
 }
 ```
 
 ---
 
-### 5. Delete Task
+## Protected Routes
 
-**DELETE**
+All task routes require a valid JWT token.
+
+Example Header
 
 ```http
-/tasks/:id
+Authorization: Bearer your_jwt_token
 ```
 
 ---
 
-## Mongoose Schema
+### Task Routes
 
-```javascript
-const taskSchema = new mongoose.Schema({
+#### Get All Tasks
 
-title:{
-type:String,
-required:true,
-trim:true
-},
+```http
+GET /api/tasks
+```
 
-description:{
-type:String
-},
+---
 
-completed:{
-type:Boolean,
-default:false
+#### Create Task
+
+```http
+POST /api/tasks
+```
+
+Request Body
+
+```json
+{
+  "title": "Build MERN Project",
+  "description": "Complete internship task"
 }
-
-},{
-timestamps:true
-});
 ```
 
 ---
 
-## Error Handling
+#### Update Task
 
-The project includes centralized error handling middleware for managing application errors.
-
-Examples:
-
-- Invalid task ID
-- Task not found
-- Validation failures
-- Server errors
+```http
+PUT /api/tasks/:id
+```
 
 ---
 
-## Logging
+#### Delete Task
 
-Morgan middleware is used for request logging.
-
-Example:
-
-```bash
-GET /tasks 200 5ms
-POST /tasks 201 12ms
+```http
+DELETE /api/tasks/:id
 ```
+
+---
+
+## Authentication Flow
+
+1. User Registers
+2. Password Hashed Using bcryptjs
+3. User Data Stored in MongoDB
+4. JWT Token Generated
+5. Token Returned to Frontend
+6. Frontend Stores Token
+7. Token Sent in Authorization Header
+8. authMiddleware Verifies Token
+9. Protected Route Access Granted
+
+---
+
+## Security Features
+
+- Password Hashing
+- JWT Authentication
+- Protected API Endpoints
+- Environment Variable Protection
+- CORS Configuration
+- Request Validation
+- Centralized Error Handling
 
 ---
 
 ## Testing
 
-This API was tested using **Postman**.
+API tested using:
 
-CRUD operations tested:
+- Postman
+- Browser Developer Tools
+- React Frontend Integration
 
-✔ POST request  
-✔ GET request  
-✔ GET by ID  
-✔ PUT request  
-✔ DELETE request
+Tested Features:
 
----
-
-## What I Learned
-
-Through this project, I learned:
-
-- Building REST APIs using Express
-- CRUD operations
-- MongoDB database integration
-- Mongoose schemas & validation
-- MVC project architecture
-- Error handling middleware
-- Environment variables
-- Git & GitHub workflow
-- API testing using Postman
+- User Registration
+- User Login
+- JWT Authentication
+- Protected Routes
+- Create Task
+- Read Tasks
+- Update Task
+- Delete Task
 
 ---
 
-## Future Improvements
+## Skills Demonstrated
 
-- Pagination
-- Search & filtering
-- Authentication & Authorization
-- JWT Login System
-- Swagger API Documentation
+- Node.js Development
+- Express.js Routing
+- REST API Development
+- MongoDB Integration
+- Mongoose ODM
+- JWT Authentication
+- Password Hashing
+- Middleware Development
+- CRUD Operations
+- Error Handling
+- API Testing
+- Git & GitHub Workflow
+
+---
+
+## Future Enhancements
+
+- Docker Deployment
+- Cloud Hosting
+- API Documentation using Swagger
+- Rate Limiting
+- Refresh Token Authentication
+- Performance Optimization
 
 ---
 
 ## Author
 
-**Mithun Sai Kumar**
+### Mithun Sai Kumar
 
-GitHub:https://github.com/mithunsaikumarpanigrahi24cse-commits   .So now make a new read me by combining these two with in a professional way ready for the internships 
+GitHub:
+
+https://github.com/mithunsaikumarpanigrahi24cse-commits
+
+---
