@@ -1,57 +1,98 @@
-# TaskFlow - Full Stack MERN Task Management Dashboard
+# 🚀 TaskFlow - Full Stack MERN Task Management Dashboard
 
-## Overview
+A modern Full Stack Task Management Application built using the MERN Stack (MongoDB, Express.js, React.js, and Node.js).
 
-TaskFlow is a Full Stack Task Management Dashboard built using the MERN Stack (MongoDB, Express.js, React.js, Node.js).
+TaskFlow enables users to securely register, authenticate, and manage their daily tasks through an intuitive and responsive dashboard. The application supports task creation, updates, deletion, filtering, and real-time task tracking while maintaining secure access through JWT-based authentication.
 
-The application allows users to securely register, log in, and manage tasks through a modern dashboard interface. Authentication is implemented using JSON Web Tokens (JWT), passwords are securely hashed using bcryptjs, and all task data is stored in MongoDB.
-
-This project demonstrates real-world full-stack development concepts including REST APIs, Authentication & Authorization, Protected Routes, Database Integration, Frontend-Backend Communication, and Responsive UI Design.
+This project demonstrates industry-standard software development practices including REST API Development, Authentication & Authorization, Protected Routes, Database Integration, Frontend–Backend Communication, MVC Architecture, and Responsive User Interface Design.
 
 ---
 
-## Features
+## 📸 Project Screenshots
 
-### Authentication & Security
+### 🔐 User Registration
+
+![Register](./screenshots/register.jpeg)
+
+Secure account creation with user validation and password encryption.
+
+---
+
+### 🔑 User Login
+
+![Login](./screenshots/Login.jpeg)
+
+JWT-based authentication system for secure access control.
+
+---
+
+### 📊 Dashboard Overview
+
+![Dashboard](./screenshots/Dashboard.jpeg)
+
+Interactive dashboard displaying task statistics, productivity insights, and task management controls.
+
+---
+
+### 📝 Create & Manage Tasks
+
+![Create Task](./screenshots/createtask.jpeg)
+
+Create, organize, and manage tasks with priority levels and due dates.
+
+---
+
+### 🎯 Task Filtering & Analytics
+
+![Task Filters](./screenshots/task-filters.jpeg)
+
+Filter tasks based on status and priority while monitoring real-time task statistics.
+
+---
+
+## ✨ Features
+
+### 🔐 Authentication & Security
 
 * User Registration
 * User Login
 * JWT Authentication
 * Protected Routes
 * Password Hashing using bcryptjs
-* Logout Functionality
+* Secure Logout Functionality
 
-### Task Management
+### 📝 Task Management
 
 * Create Tasks
 * View Tasks
 * Update Tasks
 * Delete Tasks
 * Mark Tasks as Completed
-* Task Statistics Dashboard
+* Mark Tasks as Pending
+* Search Tasks
 * Task Filtering
+* Priority-Based Task Management
 
-### Frontend
+### 📊 Dashboard
 
-* React.js + Vite
-* React Router DOM
-* Axios API Integration
-* Responsive UI
-* Component-Based Architecture
+* Total Tasks Counter
+* Completed Tasks Counter
+* Pending Tasks Counter
+* High Priority Task Counter
+* Search Functionality
+* Task Statistics Overview
 
-### Backend
+### 🎨 User Interface
 
-* RESTful API
-* MongoDB Integration
-* Mongoose ODM
-* Authentication Middleware
-* Error Handling Middleware
-* Morgan Request Logging
-* Environment Variable Configuration
+* Modern Dashboard Design
+* Responsive Layout
+* Mobile-Friendly Interface
+* Professional User Experience
+* Clean and Organized Workflow
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
 
@@ -67,7 +108,7 @@ This project demonstrates real-world full-stack development concepts including R
 * Express.js
 * MongoDB
 * Mongoose
-* JWT (jsonwebtoken)
+* JSON Web Token (JWT)
 * bcryptjs
 * dotenv
 * cors
@@ -83,180 +124,230 @@ This project demonstrates real-world full-stack development concepts including R
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```plaintext
-InternSpark Project1
+INTERNSPARK PROJECT1
 │
 ├── frontend
-│   ├── src
-│   │   ├── assets
-│   │   ├── components
-│   │   ├── pages
-│   │   ├── services
-│   │   ├── styles
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   │
+│
 │   ├── public
-│   ├── package.json
-│   └── README.md
+│
+│   └── src
+│       ├── assets
+│       ├── components
+│       ├── pages
+│       ├── services
+│       ├── styles
+│       ├── App.jsx
+│       ├── main.jsx
+│       └── index.css
 │
 ├── task-api
+│
 │   ├── config
 │   ├── Controllers
 │   ├── middleware
 │   ├── models
 │   ├── routes
 │   ├── server.js
-│   ├── package.json
-│   └── README.md
+│   └── package.json
+│
+├── screenshots
 │
 └── README.md
 ```
 
 ---
 
-## Folder Explanation
+## 🏗️ Application Architecture
 
-### Frontend
-
-| Folder/File | Purpose                         |
-| ----------- | ------------------------------- |
-| assets      | Stores images and static assets |
-| components  | Reusable React components       |
-| pages       | Application pages               |
-| services    | API communication layer         |
-| styles      | CSS styling files               |
-| App.jsx     | Root component                  |
-| main.jsx    | React entry point               |
-
-### Backend
-
-| Folder/File | Purpose                           |
-| ----------- | --------------------------------- |
-| config      | Database configuration            |
-| Controllers | Business logic layer              |
-| middleware  | Authentication & error middleware |
-| models      | MongoDB schemas                   |
-| routes      | API route definitions             |
-| server.js   | Backend entry point               |
+```plaintext
+User
+  │
+  ▼
+React Frontend
+  │
+  ▼
+Axios API Requests
+  │
+  ▼
+Express Routes
+  │
+  ▼
+Controllers
+  │
+  ▼
+MongoDB Database
+```
 
 ---
 
-## Authentication Flow
+## 🔄 Authentication Workflow
 
-1. User registers with name, email, and password.
+### Registration Process
+
+1. User enters registration details.
 2. Password is hashed using bcryptjs.
-3. User information is stored in MongoDB.
+3. User data is stored in MongoDB.
 4. JWT token is generated.
-5. Token is sent to the frontend.
-6. ProtectedRoute verifies token presence.
-7. Authenticated users can access the dashboard.
+5. Token is returned to the frontend.
+
+### Login Process
+
+1. User enters credentials.
+2. Credentials are verified.
+3. JWT token is generated.
+4. Token is stored on the client.
+5. Protected dashboard access is granted.
+
+### Protected Route Access
+
+1. Frontend sends JWT token.
+2. Authentication middleware validates the token.
+3. User is authorized.
+4. Requested resources are returned.
 
 ---
 
-## Installation & Setup
+## ⚙️ Installation & Setup
 
 ### Clone Repository
 
 ```bash
 git clone https://github.com/mithunsaikumarpanigrahi24cse-commits/task-management-api.git
 
+cd task-management-api
 ```
 
-### Install Frontend Dependencies
+### Frontend Setup
 
 ```bash
 cd frontend
+
 npm install
 ```
 
-### Install Backend Dependencies
+### Backend Setup
 
 ```bash
 cd ../task-api
+
 npm install
 ```
 
-### Create Backend Environment Variables
+### Configure Environment Variables
 
-Create a `.env` file:
+Create a `.env` file inside the backend directory:
 
 ```env
 PORT=5000
+
 MONGO_URI=your_mongodb_connection_string
+
 JWT_SECRET=your_secret_key
+
 CLIENT_URL=http://localhost:5173
 ```
 
 ---
 
-## Running The Project
+## ▶️ Running The Project
 
-### Start Backend
+### Start Backend Server
 
 ```bash
 cd task-api
+
 npm start
 ```
 
-### Start Frontend
+### Start Frontend Application
 
 ```bash
 cd frontend
+
 npm run dev
+```
+
+Frontend URL:
+
+```plaintext
+http://localhost:5173
+```
+
+Backend URL:
+
+```plaintext
+http://localhost:5000
 ```
 
 ---
 
-## API Endpoints
+## 🌐 API Endpoints
 
 ### Authentication
 
 ```http
 POST /api/auth/register
+
 POST /api/auth/login
 ```
 
-### Tasks
+### Task Management
 
 ```http
 GET    /api/tasks
+
 POST   /api/tasks
+
 PUT    /api/tasks/:id
+
 DELETE /api/tasks/:id
 ```
 
 ---
 
-## Skills Demonstrated
+## 📚 Skills Demonstrated
 
-* MERN Stack Development
+* Full Stack MERN Development
 * REST API Development
-* Authentication & Authorization
-* MongoDB Integration
-* React Hooks
-* React Router
-* Axios Integration
+* JWT Authentication & Authorization
+* MongoDB Database Integration
 * MVC Architecture
 * Middleware Implementation
-* API Testing
+* React Hooks
+* React Router DOM
+* Axios API Integration
+* Protected Routes
+* Responsive Web Design
+* Frontend–Backend Communication
+* API Testing using Postman
 * Git & GitHub Workflow
 * Full Stack Debugging
 
 ---
 
-## Future Enhancements
+## 🚀 Future Improvements
 
-* Docker Containerization
-* Cloud Deployment (Render / Vercel)
-* Role-Based Access Control (RBAC)
-* Advanced Analytics Dashboard
+* Cloud Deployment (Vercel & Render)
+* Team Collaboration Features
+* Task Sharing Functionality
+* Due Date Reminders
+* Dashboard Analytics
+* Activity Tracking
 
 ---
 
-## Author
+## 👨‍💻 Author
 
-**Mithun Sai Kumar**
+### Mithun Sai Kumar Panigrahi
+
+B.Tech Computer Science Engineering Student
+
+* GitHub: https://github.com/mithunsaikumarpanigrahi24cse-commits
+* LinkedIn: https://linkedin.com/in/mithunsaicse2024
+
+---
+
+⭐ If you found this project useful, consider giving it a star.
