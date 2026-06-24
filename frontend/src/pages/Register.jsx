@@ -23,6 +23,7 @@ export default function Register() {
   };
 
   return (
+    
     <main className="auth-page">
       <section className="auth-card">
         <div className="auth-header">
